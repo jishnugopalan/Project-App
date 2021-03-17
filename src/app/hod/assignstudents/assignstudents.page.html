@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Assign Students</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item *ngFor="let s of student">
+          <ion-label>{{s.studentdetails[0].name}}</ion-label>
+          <ion-select interface="popover" (ionChange)="setfac($event)">
+            <ion-select-option *ngFor="let f of faculty" value="{{f.faculty_id}}">{{f.userdetails[0].name}}</ion-select-option>
+            
+          </ion-select>
+          <ion-button slot="end" (click)="assign(s.student_id)">Assign</ion-button>
+        </ion-item>
+</ion-content>

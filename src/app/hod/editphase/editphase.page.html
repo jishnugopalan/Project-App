@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Update Phase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card let *ngFor="let ph of phase">
+<ion-item (click)="setphase()">{{ph.phase}}</ion-item>
+<ion-item *ngIf="a">
+<ion-input placeholder="Edit phase" inputmode="text" [(ngModel)]="phs"></ion-input><br>
+<ion-button (click)="updatephase()">Save</ion-button>
+</ion-item>
+<ion-item (click)="setdesc()">{{ph.description}}</ion-item>
+<ion-item *ngIf="b">
+<ion-input placeholder="Edit description" inputmode="text" [(ngModel)]="desc"></ion-input><br>
+<ion-button (click)="updatedesc()">Save</ion-button>
+</ion-item>
+<ion-item (click)="setduedate()">Due date:{{ph.due_date | date:'dd/MM/yyyy'}}</ion-item>
+<ion-item *ngIf="c">
+  <ion-datetime displayFormat="DD MM YYYY" placeholder="Select Date" [(ngModel)]="due"></ion-datetime><br>
+<ion-button (click)="updatedue()">Save</ion-button>
+</ion-item>
+
+</ion-card>
+</ion-content>

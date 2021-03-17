@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Add Faculty</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+<div id="container">
+<ion-card color="success">
+ 
+<ion-card-header>
+          
+          <ion-card-title>Faculty Registration</ion-card-title>
+  </ion-card-header>
+  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+ 
+    <ion-card>
+      <ion-item>
+        <ion-label class="testclass" position="floating" >Name<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="name" inputmode="text"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.name">
+        <ng-container *ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Email<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="email" inputmode="text"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.email">
+        <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Phone number<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input formControlName="phone" inputmode="tel"></ion-input>
+      </ion-item>
+      <div *ngFor="let error of errorMessages.phone">
+        <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+          <small class="error-message">{{error.message}}</small>
+        </ng-container>
+      </div>
+    </ion-card>
+   
+
+    <!--<ion-button expand="full" type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>-->
+    <ion-button expand="block" type="button" color="light" (click)="register()" [disabled]="!credentialsForm.valid">Register</ion-button>
+ 
+  </form>
+  </ion-card>
+  </div>
+</ion-content>

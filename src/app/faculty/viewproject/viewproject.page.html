@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>View Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card *ngFor="let p of project">
+<img src="../../../assets/img/classroom.png">
+
+<ion-item color="primary">
+
+
+{{p.project_type}} {{p.academic_year | date:'yyyy'}} <br>
+</ion-item>
+<ion-item>
+Created at {{p.date_time | date:'dd/MM/yyyy'}},{{p.date_time | date:'HH:mm a'}}<br>
+
+</ion-item>
+
+
+
+
+
+</ion-card>
+<ion-card>
+<ion-item routerLink="/classshare" color="primary">
+<ion-label>Share with your classroom</ion-label>
+</ion-item>
+</ion-card>
+<ion-item>
+<ion-text color="primary"><h3>Assigned Students</h3></ion-text>
+</ion-item>
+<ion-card *ngFor="let f of faculty" (click)="viewstudent(f.student_id)">
+
+<ion-item color="success">
+<ion-avatar>
+           <img src="{{f.studentdetails[0].profile_pic}}" onError="src = 'assets/img/profile.png'">
+           </ion-avatar>
+           {{f.studentdetails[0].name}}
+     
+</ion-item>
+
+</ion-card>
+
+
+<!--<ion-card>
+<ion-card-header><ion-text color="primary"><h3>Project Phases</h3></ion-text></ion-card-header>
+<ion-card let *ngFor="let ph of phase">
+<ion-item><ion-text color="danger"><h3>{{ph.phase}}</h3></ion-text></ion-item>
+<ion-item>{{ph.description}}</ion-item>
+<ion-item>Due date:{{ph.due_date | date:'dd/MM/yyyy'}}</ion-item>
+        
+</ion-card>
+</ion-card>-->
+
+
+
+
+</ion-content>

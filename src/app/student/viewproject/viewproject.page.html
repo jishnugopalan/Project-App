@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>View Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card *ngFor="let p of project">
+<img src="../../../assets/img/classroom.png">
+
+<ion-item>
+{{p.academic_year | date:'yyyy'}} <br>
+
+{{p.project_type}}
+</ion-item>
+<ion-item>
+Created at {{p.date_time | date:'dd/MM/yyyy'}},{{p.date_time | date:'HH:mm a'}}<br>
+
+</ion-item>
+</ion-card>
+<ion-card *ngFor="let f of faculty">
+
+<ion-item>
+<ion-avatar>
+           <img src="{{f.userdetails[0].profile_pic}}" onError="src = 'assets/img/profile.png'">
+           </ion-avatar>
+           {{f.userdetails[0].name}}
+           <ion-badge color="danger">Faculty</ion-badge>
+</ion-item>
+<ion-item>
+Mail ID:{{f.userdetails[0].email}}<br>
+Phone:{{f.userdetails[0].phone}}
+</ion-item>
+<ion-item><ion-button (click)="chat()">Chat now</ion-button></ion-item>
+
+<ion-card *ngFor="let c of cls"> 
+<ion-item>
+{{c.content}}
+</ion-item>
+<ion-item>
+{{c.datetime | date:'dd/MM/yyyy'}},{{c.datetime | date:'HH:mm a'}}<br>
+
+</ion-item>
+</ion-card>
+
+</ion-card>
+<ion-card>
+<ion-card-header><ion-text color="danger"><h3>Project Phases</h3></ion-text></ion-card-header>
+<ion-card let *ngFor="let ph of phase" (click)="gotouploads(ph._id)">
+<ion-item>{{ph.phase}}</ion-item>
+
+
+</ion-card>
+</ion-card>
+</ion-content>

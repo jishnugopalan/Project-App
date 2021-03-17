@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>View Project</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let p of project">
+<img src="../../../assets/img/classroom.png">
+
+<ion-item color="primary">
+
+
+{{p.project_type}} {{p.academic_year | date:'yyyy'}} 
+</ion-item>
+<ion-item>
+Created at {{p.date_time | date:'dd/MM/yyyy'}},{{p.date_time | date:'HH:mm a'}}<br>
+
+</ion-item>
+<ion-item>
+<ion-button (click)="setascomplete(p._id)">Marked as completed</ion-button>
+</ion-item>
+</ion-card>
+<ion-card>
+<ion-card-header><h2>Project Phase</h2></ion-card-header>
+<ion-card let *ngFor="let ph of phase">
+<ion-item color="success">{{ph.phase}}</ion-item>
+<ion-item>{{ph.description}}</ion-item>
+<ion-item>Due date:{{ph.due_date | date:'dd/MM/yyyy'}}</ion-item>
+
+
+<ion-button (click)="edit(ph._id)">Edit</ion-button>
+<ion-button (click)="delete(ph._id)">Delete</ion-button>
+
+</ion-card>
+</ion-card>
+</ion-content>

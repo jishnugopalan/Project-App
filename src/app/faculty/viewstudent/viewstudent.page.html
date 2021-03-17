@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>My Students</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let f of student">
+
+<ion-item>
+<ion-avatar>
+           <img src="{{f.studentdetails[0].profile_pic}}" onError="src = 'assets/img/profile.png'">
+           </ion-avatar>
+           {{f.studentdetails[0].name}}
+     
+</ion-item>
+<ion-item>
+Mail ID:{{f.studentdetails[0].email}}
+</ion-item>
+<a href="tel:{{f.studentdetails[0].phone}}" class="button button-positive">
+<ion-item>
+<ion-icon name="call-outline"></ion-icon>Phone:{{f.studentdetails[0].phone}}
+
+</ion-item>
+</a>
+<ion-item>
+<ion-button (click)="chat(f.student_id)">Chat now</ion-button>
+</ion-item>
+<ion-item *ngIf="f.internal_mark">
+Internal Mark:{{f.internal_mark}}
+</ion-item>
+</ion-card>
+
+<ion-card let *ngFor="let ph of phase" (click)="viewsubmission(ph._id)">
+<ion-item color="success">{{ph.phase}}
+
+</ion-item>
+<ion-item color="danger">Due date:{{ph.due_date | date:'dd/MM/yyyy'}}</ion-item>
+
+
+
+</ion-card>
+
+<ion-card>
+<ion-item color="primary">Add Internal Mark</ion-item>
+<ion-item>
+<ion-input placeholder="Inetrnal mark out of 20" inputmode="tel" [(ngModel)]="mark"></ion-input>
+</ion-item>
+<ion-item><ion-button (click)="addinternalmark()">Add</ion-button></ion-item>
+</ion-card>
+
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>View Students</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let s of student">
+  <ion-item>
+          <ion-avatar>
+           <img src="{{s.studentdetails[0].profile_pic}}" onError="src = 'assets/img/profile.png'">
+           </ion-avatar>{{s.studentdetails[0].name}}
+           </ion-item>
+          
+      
+      <ion-item>
+Mail ID:{{s.studentdetails[0].email}}
+</ion-item>
+<a href="tel:{{s.studentdetails[0].phone}}" class="button button-positive">
+<ion-item>
+<ion-icon name="call-outline"></ion-icon>Phone:{{s.studentdetails[0].phone}}
+
+</ion-item>
+</a>
+<ion-item>
+Assigned Faculty:{{fac_name}}
+</ion-item>
+<ion-item *ngIf="s.internal_mark">
+Internal Mark:{{s.internal_mark}}
+</ion-item>
+
+
+</ion-card>
+
+</ion-content>

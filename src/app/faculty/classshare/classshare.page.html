@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>Share With Classroom</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+<ion-item>
+<ion-textarea placeholder="Share with Classroom" [(ngModel)]="content"></ion-textarea>
+</ion-item>
+<ion-item>
+<ion-button (click)="share()">Share</ion-button>
+</ion-item>
+</ion-card>
+<ion-card *ngFor="let c of cls"> 
+<ion-item>
+{{c.content}}
+</ion-item>
+<ion-item>
+{{c.datetime | date:'dd/MM/yyyy'}},{{c.datetime | date:'HH:mm a'}}<br>
+
+</ion-item>
+<ion-item>
+<ion-button (click)="deleteshare(c._id)">Delete</ion-button>
+
+</ion-item>
+</ion-card>
+</ion-content>

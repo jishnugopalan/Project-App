@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  <ion-title>BPC Project Classroom</ion-title>
+  </ion-toolbar>
+  
+
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let p of project" (click)="viewproject(p._id)">
+<img src="../../../assets/img/classroom.png">
+
+<ion-item color="primary">
+
+
+{{p.project_type}} {{p.academic_year | date:'yyyy'}} <br>
+</ion-item>
+<ion-item>
+Created at {{p.date_time | date:'dd/MM/yyyy'}},{{p.date_time | date:'hh:mm a'}}
+
+</ion-item>
+</ion-card>
+</ion-content>
